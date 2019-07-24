@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container form-group">
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <div class="card bg-white text-black">
+                    <div class="card-body">
+                        <a class="text-success" href="{% url 'employees:add_employee' %}"><h3>Add Employee</h3></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 form-group">
+                <div class="card bg-white text-black">
+                    <div class="card-body">
+                        <a class="text-success" href="{% url 'employees:list_employee' %}"><h3>List Employees</h3></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 form-group">
+                <div class="card bg-white text-white">
+                    <div class="card-body">
+                        <a class="text-success" href="{% url 'employees:add_employee' %}"><h3>Train Employee</h3></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card bg-white text-white">
+                    <div class="card-body">
+                        <a class="text-success" href="{% url 'employees:add_employee' %}"><h3>Detect Employee via Images</h3></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card bg-white text-white">
+                    <div class="card-body">
+                        <a class="text-success" href="{% url 'employees:add_employee' %}"><h3>Detect Employee via Videos</h3></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

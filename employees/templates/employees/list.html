@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="col-md-offset-4">
+            <table class="table table-dark">
+                <thead>
+                    <tr>
+                        <th> Username </th>
+                        <th>First Name</th>
+                        <th>Last Name </th>
+                        <th> Department</th>
+                        <th>Visit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for employee in employees %}
+                        <tr>
+                            <th>{{ employee.username }}</th>
+                            <th>{{ employee.first_name }}</th>
+                            <th>{{ employee.last_name }}</th>
+                            <th>{{ employee.department }}</th>
+                            <th><a href="{%url 'employees:show_employee' employee.id %}">Show</a></th>
+                        </tr>
+                    {% endfor %}
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock content %}
