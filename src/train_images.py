@@ -34,7 +34,8 @@ class IdentityMetadata():
 class Trainer():
 	def __init__(self):
 		# self.image_dir = sys.argv[1]
-		self.image_dir = "uploads"
+		# self.image_dir = "/home/webwerks/projects/project-face-recognition/23-07/face_detection/uploads"
+		self.image_dir = "/home/webwerks/projects/project-face-recognition/23-07/face_detection/src/images"
 		self.model = self.create_model()
 		self.alignment = AlignDlib('models/landmarks.dat')
 
@@ -61,8 +62,9 @@ class Trainer():
 
 
 	def align_image(self, img):
-		return self.alignment.align(96, img, self.alignment.getLargestFaceBoundingBox(img), 
+		return  self.alignment.align(96, img, self.alignment.getLargestFaceBoundingBox(img), 
 							   landmarkIndices=AlignDlib.OUTER_EYES_AND_NOSE)
+		
 
 	def train(self):
 		metadata = self.load_metadata(self.image_dir)
@@ -72,13 +74,15 @@ class Trainer():
 		embedded = {}
 
 		for i, m in enumerate(metadata):
-			print(m.image_path())
+			
 			img = self.load_image(m.image_path())
 			img = self.align_image(img)
-			# scale RGB values to interval [0,1]
-			img = (img / 255.).astype(np.float32)
-			# obtain embedding vector for image
-			embedded[m.image_path()] = self.model.predict(np.expand_dims(img, axis=0))[0] 
+			
+			if img is not None:
+				# scale RGB values to interval [0,1]
+				img = (img / 255.).astype(np.float32)
+				# obtain embedding vector for image
+				embedded[m.image_path()] = self.model.predict(np.expand_dims(img, axis=0))[0] 
 
 		pickle.dump( embedded, open("train-files/embeddings.pkl", "wb" ) )
 
