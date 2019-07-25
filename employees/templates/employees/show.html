@@ -2,35 +2,34 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            <div class="col-md-offset-4 col-md-8">
+            <div class="col-md-4">
                 <div class="card">
-                    <div class="card-body">
-                        <table class="table table-blue">
-                            <thead>
-                                <tr>
-                                    <th>Username </th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Department</th>
-                                </tr>       
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th>{{ employee.username }}</th>
-                                    <th>{{ employee.first_name }}</th>
-                                    <th>{{ employee.last_name }}</th>
-                                    <th>{{ employee.department }}</th>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="card-body bg-dark">
+                        <ul class="list-group">
+                            <li class="list-group-item">Username: {{ employee.username }}<br>
+                            <li class="list-group-item">First Name: {{ employee.first_name }}<br>
+                            <li class="list-group-item">Last Name: {{ employee.last_name }}<br>
+                            <li class="list-group-item">Department: {{ employee.department }}
+                        </ul>      
                     </div>
                 </div>
             </div>
+            <div class="col-md-8">
+                {% if images %}
+                    <div class="card">
+                        <div class="card-body bg-dark">
+                            <div class="row">
+                                {% for  image in images %}
+                                    <div class="col-md-2">
+                                        <img width="50%" height="50%" src="{{ MEDIA_URL }}{{image}}"  alt="Cinque Terre">
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
         </div>
-    </div>
-    <div class="container">
-    {% for  file in files %}
-        <img src="{{ MEDIA_URL }}{{file}}" class="img-fluid" alt="Cinque Terre">
-    {% endfor %}
+        <a class="btn btn-success" href="{%url 'employees:edit_employee' employee.id %}">Edit Employee</a>
     </div>
 {% endblock content %}

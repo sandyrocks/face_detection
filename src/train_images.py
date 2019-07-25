@@ -34,7 +34,7 @@ class IdentityMetadata():
 class Trainer():
 	def __init__(self):
 		# self.image_dir = sys.argv[1]
-		self.image_dir = "/home/webwerks/projects/project-face-recognition/23-07/pats/images"
+		self.image_dir = "uploads"
 		self.model = self.create_model()
 		self.alignment = AlignDlib('models/landmarks.dat')
 

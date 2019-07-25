@@ -6,16 +6,35 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            <div class="col-md-offset-4 col-md-8">
-                <form method="POST" enctype="multipart/form-data">
-                    <div class="form-group">
-                        {% csrf_token %}
-                        {{ form|crispy}}
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-body bg-dark text-success">
+                        <form method="POST" enctype="multipart/form-data">
+                            <div class="form-group">
+                                {% csrf_token %}
+                                {{ form|crispy}}
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-success" value="{{ button_title }}">
+                            </div>
+                        </form>
                     </div>
-                    <div class="form-group">
-                        <input type="submit" class="btn btn-success" value="Create Employee">
+                </div>
+            </div>
+            <div class="col-md-7">
+            {% if images %}
+                <div class="card">
+                    <div class ="card-body bg-dark">
+                        <div class="row">
+                            {% for  image in images %}
+                                <div class="col-md-2">
+                                    <img class="profile" width="50%" height="50%" src="{{ MEDIA_URL }}{{image}}"  alt="Cinque Terre">
+                                </div>
+                            {% endfor %}
+                        </div>
                     </div>
-                </form>
+                </div>
+            {% endif %}
             </div>
         </div>
     </div>

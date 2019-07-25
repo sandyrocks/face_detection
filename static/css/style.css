@@ -2,5 +2,9 @@ img {
     width: 100px;  /* set to anything and aspect ratio is maintained - also corrects glitch in Internet Explorer */
     height: 100px;  /* set to anything and aspect ratio is maintained */
     max-width: 100%;
-    border: 1px solid;  /* for older IE browsers that draw borders around images */
+    border: 3px solid;  /* for older IE browsers that draw borders around images */
+}
+
+.profile {
+    border: 2px solid;
 }
